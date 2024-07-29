@@ -1,0 +1,7 @@
+gesdinet_jwt_refresh_token:
+    ttl: 14400 # Temps de vie du refresh token en secondes (4h ici)
+    ttl_update: true
+    user_provider: app_user_provider  
+    manager_type: orm 
+    refresh_token_class: App\Entity\RefreshToken 
+    firewall: api 
