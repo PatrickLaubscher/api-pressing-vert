@@ -31,6 +31,7 @@ class Customer extends User
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $creation_date = null;
 
+    #[Groups("customer:read")]
     /**
      * @var Collection<int, Order>
      */

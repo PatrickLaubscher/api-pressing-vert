@@ -98,11 +98,7 @@ class AppFixtures extends Fixture
             ->setFirstname('Bernard')
             ->setPhone('0000000000')
             ->setRoles(['ROLE_ADMIN'])
-            ->setPassword($this->hasher->hashPassword(
-                $adminUser,
-                "admin"
-            ))
-            ->setDiscr('admin');
+            ->setPassword("bernard");
         $manager->persist($adminUser);
 
         foreach (SELF::EMPLOYEE_STATUS as $status) {
@@ -123,14 +119,26 @@ class AppFixtures extends Fixture
                 ->setRoles(['ROLE_EMPLOYEE'])
                 ->setCreationDate($faker->dateTimeBetween('-3 years', '-3 weeks'))
                 ->setEmployeeStatus($employeeStatusList[0])
-                ->setPassword($this->hasher->hashPassword(
-                    $employee,
-                    "employee"
-                ))
-                ->setDiscr('employee');
+                ->setPassword("employee");
             $manager->persist($employee);
             $employees[] = $employee;
         }
+
+
+        $employee = new Employee();
+        $employee
+            ->setEmail('isabelleD@auplivert.com')
+            ->setCivility($civilities[0])
+            ->setLastname('Duchamp')
+            ->setFirstname('Isabelle')
+            ->setPhone('0000000000')
+            ->setRoles(['ROLE_EMPLOYEE'])
+            ->setCreationDate($faker->dateTimeBetween('-3 years', '-3 weeks'))
+            ->setEmployeeStatus($employeeStatusList[0])
+            ->setPassword("employee");
+        $manager->persist($employee);
+        $employees[] = $employee;
+        
 
         for($i=0; $i < SELF::CUSTOMERS_NB; $i++){
             $customer = new Customer();
@@ -144,11 +152,7 @@ class AppFixtures extends Fixture
                 ->setCity($faker->randomElement($cities))
                 ->setAddress($faker->sentence())
                 ->setCreationDate($faker->dateTimeBetween('-3 years', '-3 weeks'))
-                ->setPassword($this->hasher->hashPassword(
-                    $customer,
-                    "customer"
-                ))
-                ->setDiscr('customer');
+                ->setPassword("customer");
             $manager->persist($customer);
             $customers[] = $customer;
         }
@@ -164,11 +168,7 @@ class AppFixtures extends Fixture
             ->setCity($faker->randomElement($cities))
             ->setAddress($faker->sentence())
             ->setCreationDate($faker->dateTimeBetween('-3 years', '-3 weeks'))
-            ->setPassword($this->hasher->hashPassword(
-                $customer,
-                "customer"
-            ))
-            ->setDiscr('customer');
+            ->setPassword("customer");
         $manager->persist($customer);
         $customers[] = $customer;
         

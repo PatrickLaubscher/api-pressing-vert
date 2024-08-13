@@ -16,17 +16,17 @@ use Symfony\Component\Serializer\Annotation\Groups;
 ]
 class Prestation
 {
-    #[Groups(["order:read", "prestation:read", "category:read"])]
+    #[Groups(["order:read", "prestation:read", "category:read", "order:read", "customer:read"])]
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
 
-    #[Groups(["orderLine:read", "employee:read", "prestation:read", "category:read"])]
+    #[Groups(["orderLine:read", "employee:read", "prestation:read", "category:read", "order:read", "customer:read"])]
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
-    #[Groups(["prestation:read", "category:read"])]
+    #[Groups(["prestation:read", "category:read", "order:read", "customer:read"])]
     #[ORM\Column]
     private ?float $base_price = null;
 

@@ -20,41 +20,41 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 class OrderLine
 {
-    #[Groups(["orderLine:read", "employee:read", "order:read"])]
+    #[Groups(["orderLine:read", "employee:read", "order:read", "customer:read"])]
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
 
-    #[Groups(["orderLine:read", "employee:read", "order:read"])]
+    #[Groups(["orderLine:read", "employee:read", "order:read", "customer:read"])]
     #[ORM\ManyToOne(inversedBy: 'orderLines')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Product $product = null;
 
-    #[Groups(["orderLine:read", "order:read"])]
+    #[Groups(["orderLine:read", "employee:read", "order:read", "customer:read"])]
     #[ORM\ManyToOne(inversedBy: 'orderLines')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Prestation $prestation = null;
 
-    #[Groups("orderLine:read")]
+    #[Groups(["orderLine:read", "employee:read"])]
     #[ORM\ManyToOne(inversedBy: 'orderLines')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Order $main_order = null;
 
-    #[Groups(["orderLine:read", "employee:read", "order:read"])]
+    #[Groups(["orderLine:read", "employee:read", "order:read", "customer:read"])]
     #[ORM\ManyToOne(inversedBy: 'orderLines')]
     #[ORM\JoinColumn(nullable: false)]
     private ?OrderLineStatus $order_line_status = null;
 
-    #[Groups(["orderLine:read", "employee:read", "order_read", "order:read"])]
+    #[Groups(["orderLine:read", "employee:read", "order:read", "customer:read"])]
     #[ORM\Column(type: Types::SMALLINT)]
     private ?int $qty = null;
 
-    #[Groups("order_read")]
+    #[Groups(["orderLine:read", "employee:read", "order:read", "customer:read"])]
     #[ORM\Column]
     private ?float $price = null;
 
-    #[Groups(["orderLine:read", "order_read"])]
+    #[Groups(["orderLine:read", "order:read"])]
     #[ORM\ManyToOne(inversedBy: 'orderLines')]
     private ?Employee $employee = null;
 

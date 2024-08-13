@@ -17,18 +17,18 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 class Product
 {
-    #[Groups(["order:read", "product:read", "prestation:read"])]
+    #[Groups(["order:read", "product:read", "prestation:read", "customer:read"])]
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
 
-    #[Groups(["order:read", "product:read"])]
+    #[Groups(["order:read", "product:read", "customer:read"])]
     #[ORM\ManyToOne(inversedBy: 'products')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Category $category = null;
 
-    #[Groups(["product:read","orderLine:read", "employee:read", "order:read", "prestation:read"])]
+    #[Groups(["product:read", "orderLine:read", "employee:read", "order:read", "prestation:read", "customer:read"])]
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 

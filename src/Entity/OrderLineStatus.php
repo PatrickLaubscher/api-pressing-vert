@@ -13,18 +13,18 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: OrderLineStatusRepository::class)]
 #[ApiResource(
-    normalizationContext: ['groups' => ['order_line:read']]
+    normalizationContext: ['groups' => ['order_line_status:read']]
 )]
 #[ApiFilter(SearchFilter::class, properties: ['name' => 'partial'])]
 class OrderLineStatus
 {
-    #[Groups(["order:read", "order_line:read"])]
+    #[Groups(["order_line_status:read", "order:read", "orderLine:read"])]
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
 
-    #[Groups(["orderLine:read", "employee:read", "order:read"])]
+    #[Groups(["order_line_status:read", "employee:read", "order:read", "orderLine:read"])]
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 

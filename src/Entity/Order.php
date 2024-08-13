@@ -18,29 +18,29 @@ use Symfony\Component\Serializer\Annotation\Groups;
 ]
 class Order
 {
-    #[Groups(["orderLine:read", "order:read"])]
+    #[Groups(["orderLine:read", "order:read", "employee:read", "customer:read"])]
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
 
-    #[Groups("order:read")]
+    #[Groups(["order:read", "customer:read"])]
     #[ORM\ManyToOne(inversedBy: 'orders')]
     #[ORM\JoinColumn(nullable: false)]
     private ?PaymentMode $payment_mode = null;
 
-    #[Groups(["order:read", "orderLine:read"])]
+    #[Groups(["order:read", "orderLine:read", "employee:read", "customer:read"])]
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $date = null;
 
-    #[Groups("order:read")]
+    #[Groups(["order:read", "customer:read"])]
     /**
      * @var Collection<int, OrderLine>
      */
     #[ORM\OneToMany(targetEntity: OrderLine::class, mappedBy: 'main_order')]
     private Collection $orderLines;
 
-    #[Groups("order:read")]
+    #[Groups(["order:read", "employee:read"])]
     #[ORM\ManyToOne(inversedBy: 'orders')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Customer $customer = null;

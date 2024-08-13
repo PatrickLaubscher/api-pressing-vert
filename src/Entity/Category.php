@@ -15,20 +15,20 @@ use Symfony\Component\Serializer\Annotation\Groups;
     )]
 class Category
 {
-    #[Groups(["category:read", "product:read", "prestation:read"])]
+    #[Groups(["category:read", "product:read", "prestation:read", "order:read"])]
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
 
-    #[Groups(["category:read", "product:read", "prestation:read"])]
+    #[Groups(["category:read", "product:read", "prestation:read", "order:read"])]
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
     #[ORM\ManyToOne(inversedBy: 'categories')]
     private ?category $parent_cat = null;
 
-    #[Groups(["category:read", "product:read", "prestation:read"])]
+    #[Groups(["category:read", "product:read", "prestation:read", "order:read"])]
     #[ORM\Column]
     private ?float $coef_price = null;
 
