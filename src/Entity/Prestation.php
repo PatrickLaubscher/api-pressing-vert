@@ -22,7 +22,7 @@ class Prestation
     #[ORM\Column]
     private ?int $id = null;
 
-    #[Groups(["orderLine:read", "employee:read", "prestation:read", "category:read"])]
+    #[Groups(["orderLine:read", "employee:read", "prestation:read", "category:read", "order:read"])]
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 

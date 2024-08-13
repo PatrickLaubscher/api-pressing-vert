@@ -46,15 +46,15 @@ class OrderLine
     #[ORM\JoinColumn(nullable: false)]
     private ?OrderLineStatus $order_line_status = null;
 
-    #[Groups(["orderLine:read", "employee:read", "order_read", "order:read"])]
+    #[Groups(["orderLine:read", "employee:read", "order:read"])]
     #[ORM\Column(type: Types::SMALLINT)]
     private ?int $qty = null;
 
-    #[Groups("order_read")]
+    #[Groups("order:read")]
     #[ORM\Column]
     private ?float $price = null;
 
-    #[Groups(["orderLine:read", "order_read"])]
+    #[Groups(["orderLine:read", "order:read"])]
     #[ORM\ManyToOne(inversedBy: 'orderLines')]
     private ?Employee $employee = null;
 
