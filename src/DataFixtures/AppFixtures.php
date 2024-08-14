@@ -18,7 +18,7 @@ use App\Entity\Prestation;
 use App\Entity\Product;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
-use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+
 
 class AppFixtures extends Fixture
 {
@@ -46,9 +46,6 @@ class AppFixtures extends Fixture
     private const ORDER_STATUS = ['En attente', 'En cours', 'Terminée'];
 
 
-
-    public function __construct(private UserPasswordHasherInterface $hasher)
-    {}
     public function load(ObjectManager $manager): void
     {
         $faker = \Faker\Factory::create();
@@ -98,7 +95,7 @@ class AppFixtures extends Fixture
             ->setFirstname('Bernard')
             ->setPhone('0000000000')
             ->setRoles(['ROLE_ADMIN'])
-            ->setPassword("bernard");
+            ->setPassword("admin");
         $manager->persist($adminUser);
 
         foreach (SELF::EMPLOYEE_STATUS as $status) {
@@ -123,22 +120,6 @@ class AppFixtures extends Fixture
             $manager->persist($employee);
             $employees[] = $employee;
         }
-
-
-        $employee = new Employee();
-        $employee
-            ->setEmail('isabelleD@auplivert.com')
-            ->setCivility($civilities[0])
-            ->setLastname('Duchamp')
-            ->setFirstname('Isabelle')
-            ->setPhone('0000000000')
-            ->setRoles(['ROLE_EMPLOYEE'])
-            ->setCreationDate($faker->dateTimeBetween('-3 years', '-3 weeks'))
-            ->setEmployeeStatus($employeeStatusList[0])
-            ->setPassword("employee");
-        $manager->persist($employee);
-        $employees[] = $employee;
-        
 
         for($i=0; $i < SELF::CUSTOMERS_NB; $i++){
             $customer = new Customer();
