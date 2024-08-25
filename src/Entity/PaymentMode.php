@@ -10,17 +10,19 @@ use ApiPlatform\Metadata\ApiResource;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: PaymentModeRepository::class)]
-#[ApiResource]
+#[ApiResource(
+    normalizationContext: ['groups' => ['paymentMode:read']]
+)]
 class PaymentMode
 {
 
-#[Groups("order:read")]
+    #[Groups(["order:read","paymentMode:read"])]
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
 
-    #[Groups("order:read")]
+    #[Groups(["order:read","paymentMode:read"])]
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
