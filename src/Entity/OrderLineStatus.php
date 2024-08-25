@@ -18,13 +18,13 @@ use Symfony\Component\Serializer\Annotation\Groups;
 #[ApiFilter(SearchFilter::class, properties: ['name' => 'partial'])]
 class OrderLineStatus
 {
-    #[Groups(["ordeLineStatus:read","order:read"])]
+    #[Groups(["ordeLineStatus:read", "order:read", "customer:read"])]
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
 
-    #[Groups(["ordeLineStatus:read","orderLine:read", "employee:read", "order:read"])]
+    #[Groups(["ordeLineStatus:read","orderLine:read", "employee:read", "order:read", "customer:read"])]
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
