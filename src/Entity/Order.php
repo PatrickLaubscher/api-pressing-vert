@@ -45,6 +45,12 @@ class Order
     #[ORM\JoinColumn(nullable: false)]
     private ?Customer $customer = null;
 
+    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    private ?\DateTimeInterface $deposit_date = null;
+
+    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
+    private ?\DateTimeInterface $available_date = null;
+
     public function __construct()
     {
         $this->orderLines = new ArrayCollection();
@@ -117,6 +123,30 @@ class Order
     public function setCustomer(?Customer $customer): static
     {
         $this->customer = $customer;
+
+        return $this;
+    }
+
+    public function getDepositDate(): ?\DateTimeInterface
+    {
+        return $this->deposit_date;
+    }
+
+    public function setDepositDate(\DateTimeInterface $deposit_date): static
+    {
+        $this->deposit_date = $deposit_date;
+
+        return $this;
+    }
+
+    public function getAvailableDate(): ?\DateTimeInterface
+    {
+        return $this->available_date;
+    }
+
+    public function setAvailableDate(\DateTimeInterface $available_date): static
+    {
+        $this->available_date = $available_date;
 
         return $this;
     }

@@ -334,6 +334,7 @@ class AppFixtures extends Fixture
             $order
                 ->setCustomer($faker->randomElement($customers))
                 ->setPaymentMode($faker->randomElement($paymentModes))
+                ->setDepositDate($faker->dateTimeBetween('-3 years', 'now'))
                 ->setDate($faker->dateTimeBetween('-3 years', 'now'));
             $manager->persist($order);
             $orders[] = $order;
