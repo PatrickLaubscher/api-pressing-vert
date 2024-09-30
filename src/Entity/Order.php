@@ -45,9 +45,11 @@ class Order
     #[ORM\JoinColumn(nullable: false)]
     private ?Customer $customer = null;
 
+    #[Groups(["order:read", "employee:read"])]
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $deposit_date = null;
 
+    #[Groups(["order:read", "employee:read"])]
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $available_date = null;
 

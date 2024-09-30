@@ -121,6 +121,20 @@ class AppFixtures extends Fixture
             $employees[] = $employee;
         }
 
+        $employee = new Employee();
+        $employee
+            ->setEmail('marie@auplivert.com')
+            ->setCivility($civilities[1])
+            ->setLastname('Chevalier')
+            ->setFirstname('Marie')
+            ->setPhone('0000000000')
+            ->setRoles(['ROLE_EMPLOYEE'])
+            ->setCreationDate($faker->dateTimeBetween('-3 years', '-3 weeks'))
+            ->setEmployeeStatus($employeeStatusList[0])
+            ->setPassword("employee");
+        $manager->persist($employee);
+        $employees[] = $employee;
+
         for($i=0; $i < SELF::CUSTOMERS_NB; $i++){
             $customer = new Customer();
             $customer
