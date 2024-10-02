@@ -43,7 +43,7 @@ class Employee extends User
     /**
      * @var Collection<int, OrderLine>
      */
-    #[ORM\OneToMany(targetEntity: OrderLine::class, mappedBy: 'employee')]
+    #[ORM\OneToMany(targetEntity: OrderLine::class, mappedBy: 'employee', cascade:['persist'])]
     private Collection $orderLines;
 
 

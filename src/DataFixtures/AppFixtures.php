@@ -27,7 +27,7 @@ class AppFixtures extends Fixture
     private const ORDER_LINE_NB = 140;
     private const ORDER_NB = 50;
 
-    private const EMPLOYEE_STATUS = ['Actif', 'Congés', 'Arrêt maladie'];
+    private const EMPLOYEE_STATUS = ['Actif', 'Congés', 'Arrêt maladie', 'Supprimé'];
 
     private const PRESTATIONS = ['Repassage classique', 'Repassage et Reprisage', 'Repassage avec Tâches difficiles', 'Nettoyage du cuir', 'Blanchisserie'];
 
