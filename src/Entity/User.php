@@ -34,7 +34,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
     new Get(),
     new Patch(),
     new Post(),
-    new Delete()
+    new Delete(security: "is_granted('ROLE_ADMIN')")
     ],
     normalizationContext: ['groups' => ['user:read', 'employee:read', 'customer:read']]
 )]
